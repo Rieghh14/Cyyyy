@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Did You Miss Me?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            width: 300px; 
+            height: 200px; 
+        }
+        h1, h2 {
+            color: #d32f2f;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            position: absolute; 
+        }
+        .yes-btn {
+            background-color: #4caf50;
+            color: white;
+            margin-bottom: 50px; 
+        }
+        .no-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        .hearts {
+            font-size: 30px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="question-container">
+        <h1 id="question">Did you miss me?</h1>
+        <button class="yes-btn" onclick="yesAnswer1()" style="position: static;">Yes</button>
+        <button class="no-btn" id="noButton1" onclick="noAnswer1()">No</button>
+    </div>
+
+    <script>
+     
+        function noAnswer1() {
+            const noButton1 = document.getElementById('noButton1');
+            const container = document.getElementById('question-container');
+            const containerWidth = container.clientWidth;
+            const containerHeight = container.clientHeight;
+
+            const randomX = Math.random() * (containerWidth - noButton1.offsetWidth);
+            const randomY = Math.random() * (containerHeight - noButton1.offsetHeight - 40); // Account for button height
+
+            noButton1.style.left = `${randomX}px`;
+            noButton1.style.top = `${randomY}px`;
+        }
+        function yesAnswer1() {
+            const container = document.getElementById('question-container');
+            container.innerHTML = `
+                <h2>Wee talagaa ba? parang hindi eh</h2>
+                <button class="no-btn" id="talagangHindiButton" onclick="talagangHindi()" style="margin-bottom: 20px;">Talagang hindi</button>
+                <button class="yes-btn" onclick="yesSuperAnswer()" style="margin-top: 20px;">Yes, super</button>
+            `;
+        }
+
+    
+        function talagangHindi() {
+            const talagangHindiButton = document.getElementById('talagangHindiButton');
+            const container = document.getElementById('question-container');
+            const containerWidth = container.clientWidth;
+            const containerHeight = container.clientHeight;
+
+         
+            const randomX = Math.random() * (containerWidth - talagangHindiButton.offsetWidth);
+            const randomY = Math.random() * (containerHeight - talagangHindiButton.offsetHeight - 40); // Account for button height
+
+         
+            talagangHindiButton.style.left = `${randomX}px`;
+            talagangHindiButton.style.top = `${randomY}px`;
+        }
+
+ 
+        function yesSuperAnswer() {
+            const container = document.getElementById('question-container');
+            container.innerHTML = `
+                <marquee class="hearts">❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️</marquee>
+                <h2>I miss you so much na din po ❤️</h2>
+            `;
+        }
+    </script>
+
+</body>
+</html>
